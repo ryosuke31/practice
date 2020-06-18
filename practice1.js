@@ -14,7 +14,7 @@ btn.addEventListener('click', () =>
   // 値を代入する変数を宣言
   let val = '';
 
-  // fizzとbuzzの値が空欄,文字列,小数が存在した場合、outputの中身を空にして、注意文を表示する
+  // fizzとbuzzの値に空欄,文字列,小数が存在した場合、outputの中身を空にして、注意文を表示する
   if (!fizz || fizz.match(/^\D+$/) || fizz.match(/^-?[0-9]+\.[0-9]+$/) || !buzz || buzz.match(/^\D+$/) || buzz.match(/^-?[0-9]+\.[0-9]+$/)) {
     output.innerHTML = '';
     output.innerHTML = '<p>整数値を入力してください</p>'
