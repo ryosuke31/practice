@@ -2,8 +2,7 @@
 const btn = document.getElementById('btn');
 
 // クリックイベント
-btn.addEventListener('click', () => 
-{
+btn.addEventListener('click', () => {
   // DOM
   const fizz_num = document.getElementById('fizz_num');
   const fizz = fizz_num.value;
@@ -14,14 +13,23 @@ btn.addEventListener('click', () =>
   // 値を代入する変数を宣言
   let val = '';
 
-  // fizzとbuzzの値に空欄,文字列,小数が存在した場合、outputの中身を空にして、注意文を表示する
-  if (!fizz || fizz.match(/^\D+$/) || fizz.match(/^-?[0-9]+\.[0-9]+$/) || !buzz || buzz.match(/^\D+$/) || buzz.match(/^-?[0-9]+\.[0-9]+$/)) {
+  // fizzとbuzzの値が空ならば、outputの中身を空にして注意文を表示する
+  if (!fizz || !buzz) {
+    output.innerHTML = '';
+    output.innerHTML = '<p>整数値を入力してください</p>'
+
+    // fizzとbuzzの値が数字以外ならば、outputの中身を空にして注意文を表示する
+  } else if (fizz.match(/^\D+$/) || buzz.match(/^\D+$/)) {
+    output.innerHTML = '';
+    output.innerHTML = '<p>整数値を入力してください</p>'
+
+  // fizzとbuzzの値が小数ならば、outputの中身を空にして注意文を表示する 
+  } else if (fizz.match(/^-?[0-9]+\.[0-9]+$/) || buzz.match(/^-?[0-9]+\.[0-9]+$/)) {
     output.innerHTML = '';
     output.innerHTML = '<p>整数値を入力してください</p>'
 
   // fizzとbuzzの値が整数値の場合
   } else {
-
     // outputの中身を空にする
     output.innerHTML = '';
 
@@ -29,16 +37,16 @@ btn.addEventListener('click', () =>
       for (let i = 1; i < 100; i++) {
 
         // iがfizzとbuzzの倍数なら、valに文字列とiを代入
-        if (i % fizz == 0 && i % buzz == 0) {
-          val = 'FizzBuzz' + i;
+        if (i % fizz === 0 && i % buzz === 0) {
+          val = 'FizzBuzz' + ' ' + i;
 
         // iがfizzの倍数なら、valに文字列とiを代入
-        } else if (i % fizz == 0) {
-          val = 'Fizz' + i;
+        } else if (i % fizz === 0) {
+          val = 'Fizz' + ' ' + i;
 
         // iがbuzzの倍数なら、valに文字列とiを代入
-        } else if (i % buzz == 0) {
-          val = 'Buzz' + i;
+        } else if (i % buzz === 0) {
+          val = 'Buzz' + ' ' + i;
         
         // iがfizzとbuzzの倍数でないなら、valを空にする
         } else {
@@ -54,5 +62,5 @@ btn.addEventListener('click', () =>
         // liのテキストにvalを代入
         li.textContent = val;      
       }
-  } 
+  }
 })
