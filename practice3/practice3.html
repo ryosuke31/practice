@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ToDoリスト</title>
+</head>
+<body>
+  <style>
+
+  </style>
+  <h1>ToDoリスト</h1>
+  <input type="radio" name="todo" value="すべて"> すべて
+  <input type="radio" name="todo" value="作業中"> 作業中
+  <input type="radio" name="todo" value="完了"> 完了
+  <div>
+   <table>
+     <thead>
+       <th>ID</th>
+       <th>コメント</th>
+       <th>状態</th>
+     </thead>
+     <tbody id="table_list">
+       
+     </tbody>
+   </table>
+  </div>
+  <h2>新規タスクの追加</h2>
+  <input type="text" id="add_comment">
+  <button id="add" type="button">追加</button>
+  
+</body>
+<script src="practice3.js"></script>
+</html>
