@@ -12,38 +12,66 @@ add.addEventListener('click', () => {
   const tr = document.createElement('tr');
   const td_number = document.createElement('td');
   const td_comment = document.createElement('td');
-  const td_condition = document.createElement('td');
+  const td_status = document.createElement('td');
   const td_delete = document.createElement('td');
   
-  // 状態ボタンにテキスト代入
-  work_btn.textContent = '作業中';
-  delete_btn.textContent = '削除';
+  // 追加タスクのオブジェクトをまとめる配列を作成
+  const todos = [];
 
-  // ID用tdにクラスを追加
-  td_number.classList.add('id_number');
-
-  // ID用tdのクラスの配列要素数を取得
-  const id_number = document.getElementsByClassName('id_number').length;
-
-  // 追加するテキストが空かチェック
-  if (add_comment.value !== '') {
-
-    // コメント用tdに入力された値を代入
-    td_comment.textContent = add_comment.value;
-
-    // 再入力のために値を空に戻す
-    add_comment.value = '';
-
-    // ID用tdにクラスの配列要素数を代入
-    td_number.textContent = id_number;
-
-    // table_listの子要素にID,コメント,状態,削除を追加
-    td_condition.appendChild(work_btn);
-    td_delete.appendChild(delete_btn);
-    tr.appendChild(td_number);
-    tr.appendChild(td_comment);
-    tr.appendChild(td_condition);
-    tr.appendChild(td_delete);
-    table_list.appendChild(tr);
+  // 追加タスクをオブジェクトで作成
+  const todo =
+  {
+    task: add_comment.value,
+    status: '作業中'
+  };
+  
+  // タスクが空欄だった場合、処理を行わずに戻す
+  if (add_comment.value === '') {
+    return;
   }
+
+  // 追加タスクがあれば、todosに追加して入力欄の値を空にする
+  if (todo) {
+    todos.push(todo);
+    add_comment.value = '';
+  }
+
+
+  // タスク一覧を表示するための関数を宣言
+  const displayTodos = () => {
+
+    // todos内の配列を一つずつ取り出す
+    todos.forEach((todo) => {
+      
+      // ID用tdにクラスを追加
+      td_number.classList.add('id_number');
+
+      // ID用tdのクラスの配列要素数を取得
+      const id_number = document.getElementsByClassName('id_number').length;
+      
+      // ID用tdにクラスの配列要素数を代入
+      td_number.textContent = id_number;
+
+      // コメント用tdにtodoのtaskを代入
+      td_comment.textContent = todo.task;
+
+      // 状態用ボタンにtodoのstatusを代入
+      work_btn.textContent = todo.status;
+
+      // 削除ボタンのテキスト代入
+      delete_btn.textContent = '削除';
+
+      // table_listの子要素にID,コメント,状態,削除を追加
+      td_status.appendChild(work_btn);
+      td_delete.appendChild(delete_btn);
+      tr.appendChild(td_number);
+      tr.appendChild(td_comment);
+      tr.appendChild(td_status);
+      tr.appendChild(td_delete);
+      table_list.appendChild(tr);
+    })
+  }
+
+  // 関数呼び出し
+  displayTodos();
 })
