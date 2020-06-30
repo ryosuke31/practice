@@ -19,8 +19,7 @@ add.addEventListener('click', () => {
   const todos = [];
 
   // 追加タスクをオブジェクトで作成
-  const todo =
-  {
+  const todo = {
     task: add_comment.value,
     status: '作業中'
   };
@@ -46,11 +45,8 @@ add.addEventListener('click', () => {
       // ID用tdにクラスを追加
       td_number.classList.add('id_number');
 
-      // ID用tdのクラスの配列要素数を取得
-      const id_number = document.getElementsByClassName('id_number').length;
-      
-      // ID用tdにクラスの配列要素数を代入
-      td_number.textContent = id_number;
+      // ID用tdにクラスの配列要素数の文字列を代入
+      td_number.textContent = document.getElementsByClassName('id_number').length;
 
       // コメント用tdにtodoのtaskを代入
       td_comment.textContent = todo.task;
@@ -58,7 +54,7 @@ add.addEventListener('click', () => {
       // 状態用ボタンにtodoのstatusを代入
       work_btn.textContent = todo.status;
 
-      // 削除ボタンのテキスト代入
+      // 削除ボタンの文字列代入
       delete_btn.textContent = '削除';
 
       // table_listの子要素にID,コメント,状態,削除を追加
