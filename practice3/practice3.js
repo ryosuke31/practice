@@ -50,8 +50,7 @@ const displayTodos = () => {
     tdNumber.classList.add('id_number');
 
     // ID用tdにクラスの配列要素数の文字列を代入
-    tdNumber.textContent = document.getElementsByClassName('id_number').length;
-
+    tdNumber.textContent = document.getElementsByClassName('id_number').length + '';
     // 削除用tdにクラスを追加
     tdDelete.classList.add('delete');
 
@@ -67,14 +66,14 @@ const displayTodos = () => {
     // 削除ボタンの文字列代入
     deleteBtn.textContent = '削除';
 
-    // 削除ボタンをクリックしたら、その行のタスクを削除
+    // 削除ボタンをクリックしたらその行のタスクを削除
     deleteBtn.addEventListener('click', () => {
       let index = tr.rowIndex - 1;
       todos.splice(index, 1);
       displayTodos();
     })
 
-    // table_listの子要素にID,コメント,状態,削除を追加
+    // tableListの子要素にID,コメント,状態,削除を追加
     tdStatus.appendChild(workBtn);
     tdDelete.appendChild(deleteBtn);
     tr.appendChild(tdNumber);
