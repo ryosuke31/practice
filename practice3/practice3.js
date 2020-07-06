@@ -63,6 +63,15 @@ const displayTodos = () => {
     // 状態用ボタンにtodoのstatusを代入
     workBtn.textContent = todo.status;
 
+    // 状態ボタンをクリックしたら状態を変更
+    workBtn.addEventListener('click', () => {
+      if (workBtn.textContent === '作業中') {
+        workBtn.textContent = '完了';
+      } else if (workBtn.textContent === '完了') {
+        workBtn.textContent = '作業中';
+      }
+    })
+
     // 削除ボタンの文字列代入
     deleteBtn.textContent = '削除';
 
