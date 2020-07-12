@@ -67,8 +67,10 @@ const displayTodos = () => {
     workBtn.addEventListener('click', () => {
       if (workBtn.textContent === '作業中') {
         workBtn.textContent = '完了';
+        todo.status = "完了";
       } else if (workBtn.textContent === '完了') {
         workBtn.textContent = '作業中';
+        todo.status = "作業中";
       }
     })
 
